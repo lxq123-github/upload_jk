@@ -27,6 +27,9 @@ public class FileServiceImpl implements FileService {
   @Value("${baseUrl}")
   private String baseUrl;
 
+  @Value("${truePath}")
+  private String truePath;
+
   @Override
   public int saveFile(FileForm form, HttpServletRequest request) throws Exception {
 
@@ -50,7 +53,7 @@ public class FileServiceImpl implements FileService {
     MultipartFile blFile = fileInfo;
     if (!blFile.isEmpty()) {
       String oldFileName = blFile.getOriginalFilename();
-      Path savePath  = Paths.get("src/main/resources/static/upload");
+      Path savePath  = Paths.get(truePath);
       String randomStr = UUID.randomUUID().toString();
       String newFileName = randomStr + oldFileName.substring(oldFileName.lastIndexOf("."));
       Files.copy(blFile.getInputStream(), savePath.resolve(newFileName), StandardCopyOption.REPLACE_EXISTING);
