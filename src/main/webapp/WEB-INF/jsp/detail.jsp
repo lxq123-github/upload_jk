@@ -13,7 +13,7 @@
 <%=request.getServletContext().getRealPath("/static/upload")%>
 	<ul>
 	<c:forEach items="${detailFile}" var="li">
-		${li.url}
+		<%--${li.url}--%>
 		<li><a href='${li.url }'>${li.filename}</a></li>
 	</c:forEach>
 	</ul>

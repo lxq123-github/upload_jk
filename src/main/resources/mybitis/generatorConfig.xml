@@ -34,7 +34,7 @@
             <property name="useJSR310Types" value="true"/>
         </javaTypeResolver>
 
-        <javaModelGenerator targetPackage="com.word.memory.entity"
+        <javaModelGenerator targetPackage="com.upload.resourceupload.entity"
                             targetProject="src/main/java">
             <property name="enableSubPackages" value="false"/>
             <property name="trimStrings" value="true"/>
@@ -46,55 +46,58 @@
         </sqlMapGenerator>
 
         <javaClientGenerator type="XMLMAPPER"
-                             targetPackage="com.word.memory.dao" targetProject="src/main/java">
+                             targetPackage="com.upload.resourceupload.dao" targetProject="src/main/java">
             <property name="enableSubPackages" value="false"/>
         </javaClientGenerator>
 
-        <table tableName="fileupload" domainObjectName="FileUpload" enableCountByExample="false" enableUpdateByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false"
-               selectByExampleQueryId="false">
-            <generatedKey column="id" sqlStatement="MySql" identity="true" />
-        </table>
-
-		<!--<table tableName="filetitle" domainObjectName="FileTitle" enableCountByExample="false" enableUpdateByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false"
-               selectByExampleQueryId="false">
-            <generatedKey column="id" sqlStatement="MySql" identity="true" />
-        </table>
 
 
-        <table tableName="t_user" domainObjectName="User" enableCountByExample="false" enableUpdateByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false"
-               selectByExampleQueryId="false">
-            <generatedKey column="id" sqlStatement="MySql" identity="true" />
-        </table>
-
-        <table tableName="t_articles" domainObjectName="Articles" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
-            enableSelectByExample="false" selectByExampleQueryId="false">
-            <property name="selectAllOrderByClause" value="id desc"/>
-            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
-        </table>
-        <table tableName="product" enableCountByExample="false" enableUpdateByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false"
-               selectByExampleQueryId="false">
-            <generatedKey column="id" sqlStatement="MySql" identity="true" />
-        </table>
-        <table tableName="zip_mapping" enableCountByExample="false" enableUpdateByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false"
-               selectByExampleQueryId="false">
-        </table>
-        <table tableName="stock" enableCountByExample="false" enableUpdateByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false"
-               selectByExampleQueryId="false">
-        </table>
-        <table tableName="order_summary" enableCountByExample="false" enableUpdateByExample="false"
+        <table tableName="filetitle" domainObjectName="FileTitle" enableCountByExample="false" enableUpdateByExample="false"
           enableDeleteByExample="false" enableSelectByExample="false"
           selectByExampleQueryId="false">
             <generatedKey column="id" sqlStatement="MySql" identity="true" />
         </table>
-        <table tableName="order_detail" enableCountByExample="false" enableUpdateByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false"
-               selectByExampleQueryId="false">
-        </table>-->
+        <!--
+            <table tableName="fileupload" domainObjectName="FileUpload" enableCountByExample="false" enableUpdateByExample="false"
+              enableDeleteByExample="false" enableSelectByExample="false"
+              selectByExampleQueryId="false">
+                <generatedKey column="id" sqlStatement="MySql" identity="true" />
+            </table>
+
+
+
+                    <table tableName="t_user" domainObjectName="User" enableCountByExample="false" enableUpdateByExample="false"
+                           enableDeleteByExample="false" enableSelectByExample="false"
+                           selectByExampleQueryId="false">
+                        <generatedKey column="id" sqlStatement="MySql" identity="true" />
+                    </table>
+
+                    <table tableName="t_articles" domainObjectName="Articles" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+                        enableSelectByExample="false" selectByExampleQueryId="false">
+                        <property name="selectAllOrderByClause" value="id desc"/>
+                        <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+                    </table>
+                    <table tableName="product" enableCountByExample="false" enableUpdateByExample="false"
+                           enableDeleteByExample="false" enableSelectByExample="false"
+                           selectByExampleQueryId="false">
+                        <generatedKey column="id" sqlStatement="MySql" identity="true" />
+                    </table>
+                    <table tableName="zip_mapping" enableCountByExample="false" enableUpdateByExample="false"
+                           enableDeleteByExample="false" enableSelectByExample="false"
+                           selectByExampleQueryId="false">
+                    </table>
+                    <table tableName="stock" enableCountByExample="false" enableUpdateByExample="false"
+                           enableDeleteByExample="false" enableSelectByExample="false"
+                           selectByExampleQueryId="false">
+                    </table>
+                    <table tableName="order_summary" enableCountByExample="false" enableUpdateByExample="false"
+                      enableDeleteByExample="false" enableSelectByExample="false"
+                      selectByExampleQueryId="false">
+                        <generatedKey column="id" sqlStatement="MySql" identity="true" />
+                    </table>
+                    <table tableName="order_detail" enableCountByExample="false" enableUpdateByExample="false"
+                           enableDeleteByExample="false" enableSelectByExample="false"
+                           selectByExampleQueryId="false">
+                    </table>-->
     </context>
 </generatorConfiguration>

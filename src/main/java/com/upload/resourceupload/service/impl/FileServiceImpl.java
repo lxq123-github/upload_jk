@@ -1,6 +1,8 @@
 package com.upload.resourceupload.service.impl;
 
+import com.upload.resourceupload.dao.FileTitleMapper;
 import com.upload.resourceupload.dao.FileUploadMapper;
+import com.upload.resourceupload.entity.FileTitle;
 import com.upload.resourceupload.entity.FileUpload;
 import com.upload.resourceupload.form.FileForm;
 import com.upload.resourceupload.service.FileService;
@@ -24,6 +26,8 @@ public class FileServiceImpl implements FileService {
 
   @Autowired
   private FileUploadMapper fileUploadMapper;
+  @Autowired
+  private FileTitleMapper fileTitleMapper;
   @Value("${baseUrl}")
   private String baseUrl;
 
@@ -38,9 +42,9 @@ public class FileServiceImpl implements FileService {
     System.out.println("path ==== " + request.getServletContext().getRealPath("/static/upload"));
     //遍历处理文件
     String info = null;
-    for (MultipartFile file:files) {
+    for (MultipartFile file : files) {
       try {
-        insertFile(form,file);
+        insertFile(form, file);
 //        info = info+"-"+s;
       } catch (Exception e) {
         e.printStackTrace();
@@ -52,11 +56,12 @@ public class FileServiceImpl implements FileService {
   private void insertFile(FileForm form, MultipartFile fileInfo) throws IOException {
     MultipartFile blFile = fileInfo;
     if (!blFile.isEmpty()) {
+      FileTitle ftitle = fileTitleMapper.getAlias(form.getTitleSelect());
       String oldFileName = blFile.getOriginalFilename();
-      Path savePath  = Paths.get(truePath);
+      Path savePath = Paths.get(truePath+"/"+ftitle.getAlias());
       String randomStr = UUID.randomUUID().toString();
       String newFileName = randomStr + oldFileName.substring(oldFileName.lastIndexOf("."));
-      Files.copy(blFile.getInputStream(), savePath.resolve(newFileName), StandardCopyOption.REPLACE_EXISTING);
+      Files.copy(blFile.getInputStream(), savePath.resolve(newFileName),StandardCopyOption.REPLACE_EXISTING);
 
       /*File file = new File("C:/", newFileName);
       System.out.println(file.getPath());
@@ -72,7 +77,7 @@ public class FileServiceImpl implements FileService {
       fileUpload.setUuidname(newFileName);
       fileUpload.setUploadtime(LocalDateTime.now());
       fileUpload.setSavepath(savePath.toAbsolutePath().toString());
-      fileUpload.setUrl(baseUrl+newFileName);
+      fileUpload.setUrl(baseUrl +ftitle.getAlias() + "/" + newFileName);
       fileUpload.setTitleId(form.getTitleSelect());
       fileUpload.setDescription(form.getFileIntroduce());
       fileUploadMapper.insertSelective(fileUpload);
